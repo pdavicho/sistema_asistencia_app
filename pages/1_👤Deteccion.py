@@ -5,10 +5,6 @@ import av
 import time
 import cv2
 
-# Inicializar en session_state si aún no existe
-if 'data_saved' not in st.session_state:
-    st.session_state['data_saved'] = False
-
 #st.set_page_config(page_title='Real Time Prediction')
 #st.set_page_config(page_title='Detección', page_icon=':👤:', layout='wide')
 st.subheader('👤 - Detección')
@@ -55,7 +51,6 @@ def video_frame_callback(frame):
         setTime = time.time()
         savedTime = time.time()  # Record when data was saved
         print('Save Data to redis database')
-        st.session_state['data_saved'] = True
 
     # Mostrar mensaje de guardado por 2 segundos
     if time.time() - savedTime < 3:  # If less than 2 seconds have passed since saving
@@ -76,7 +71,3 @@ webrtc_streamer(key="realtimePredictions", video_frame_callback=video_frame_call
     }
                 )
 
-
-# Mostrar mensaje si los datos fueron guardados
-if st.session_state['data_saved']:
-    st.success('Datos registrados en la BD correctamente.')
