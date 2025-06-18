@@ -58,6 +58,3 @@ Este sistema fue diseñado como solución práctica y funcional para **control d
 ## 📜 Licencia
 
 MIT License – libre para uso, modificación y distribución con atribución.
-
-```
-
